@@ -6,12 +6,12 @@ import be.vdab.post.Post;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NewsFeed implements Serializable {
     private static final long serialVersionUID = 1L;
-    private ArrayList<Post> posts = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
 
     public List<Post> getPosts() {
         return posts;
@@ -39,11 +39,11 @@ public class NewsFeed implements Serializable {
 
     public ArrayList<Post> gesorteerdeLijst() {
 
-        return (ArrayList<Post>) posts.stream().sorted((p1, p2) -> -p2.compareTo(p1));
+        return (ArrayList<Post>) posts.stream().sorted((p1, p2) -> -p2.compareTo(p1)).collect(Collectors.toList());
     }
 
-    public ArrayList<PhotoPost> lijstVanPhotoPosts() {
-        return (ArrayList<PhotoPost>) posts.stream().filter(post -> post instanceof PhotoPost);
+    public List<Post> lijstVanPhotoPosts() {
+        return posts.stream().filter(post -> post instanceof PhotoPost).collect(Collectors.toList());
     }
 
 }

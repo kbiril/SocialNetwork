@@ -46,7 +46,7 @@ public abstract class Post implements Comparable<Post>, Serializable {
 
     @Override
     public int compareTo(Post p) { // van recent naar minder recent
-        if (p.timestamp < timestamp) return - 1;
+        if (p.timestamp < timestamp) return -1;
         else if (p.timestamp > timestamp) return 1;
         else return 0;
     }

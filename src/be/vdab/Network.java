@@ -247,13 +247,21 @@ public class Network {
         newsFeed.addPost(commentedPost2);
         newsFeed.addPost(commentedPost3);
         newsFeed.addPost(commentedPost1); // double
+        System.out.println(" ******* New Feed show *******");
 
         newsFeed.show();
+        System.out.println();
+        System.out.println(" ******* New Feed gesorteerd *******");
+        newsFeed.gesorteerdeLijst().stream().forEach(post -> post.display());
+        System.out.println();
+        System.out.println(" ******* Enkel PhotoPost (Filter) *******");
+        newsFeed.lijstVanPhotoPosts().stream().forEach(photoPost -> photoPost.display());
+        System.out.println();
 
-        newsFeed.gesorteerdeLijst().stream().forEach(post -> post.display()); // werkt niet
-        newsFeed.lijstVanPhotoPosts().stream().forEach(photoPost -> photoPost.display()); // werkt niet
 
         writeToFile(newsFeed);
+
+        System.out.println(" ******* New Feed from file *******");
         readFromFile().show();
 
 
